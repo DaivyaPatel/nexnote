@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0f0f0f;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #ff6b6b;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #3a3a3a;
+  }
+  
+  .animate-flash {
+    animation: flash 0.5s ease-out;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.2s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-3 py-1.5 text-sm font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-accent text-white hover:bg-accent-hover;
+  }
+  
+  .btn-secondary {
+    @apply bg-surface text-text-primary border border-border hover:bg-border;
+  }
+  
+  .input {
+    @apply bg-surface border border-border text-text-primary px-3 py-1.5 text-sm focus:outline-none focus:border-accent;
+  }
+  
+  .mono {
+    @apply font-mono text-xs text-text-muted;
+  }
+  
+  .node-item {
+    @apply flex items-center gap-2 py-1.5 px-2 hover:bg-surface cursor-pointer group;
+  }
+  
+  .context-menu {
+    @apply bg-surface border border-border shadow-none min-w-[180px];
+  }
+  
+  .context-menu-item {
+    @apply px-3 py-1.5 text-sm text-text-primary hover:bg-border cursor-pointer;
+  }
+}
